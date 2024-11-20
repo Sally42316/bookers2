@@ -4,4 +4,11 @@ class HomesController < ApplicationController
 
   def about
   end
+
+  def index
+    if logged_in?
+      flash[:success] = "Loged in successfully"
+    end
+  end
 end
+

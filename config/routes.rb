@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   # ↓headerのAboutリンクをつくりたくて
   get 'home/about', to: 'homes#about'
   get 'book/index', to: 'books#index'
-  get '/about', to: 'controller#action'
+  # get '/about', to: 'controller#action'
+  get '/about', to: 'homes#about'
 end

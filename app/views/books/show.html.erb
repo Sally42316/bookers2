@@ -17,7 +17,7 @@
 <% if @user.image.attached? %>
     <%= image_tag @user.image, size: "100x100" %>
   <% else %>
-    <%= image_tag 'default-image', size: "200x200" %>
+    <%= image_tag 'default-image', size: "100x100" %>
   <% end %>
 </tr>
 <tr>
@@ -73,7 +73,7 @@
       <% if @user.image.attached? %>
         <%= image_tag @user.image, size: "100x100" %>
       <% else %>
-        <%= image_tag 'default-image', size: "200x200" %>
+        <%= image_tag 'default-image', size: "100x100" %>
       <% end %>
       <br>
       <%= link_to @user.name, user_path(@book.user) %>
@@ -86,10 +86,11 @@
     </td>
   <% if @book.user == current_user %>
     <td>
-        <%= link_to "Edit", edit_book_path(@book) %>
+        <%= link_to "Edit", edit_book_path(@book), class: "btn btn-success" %>
+        
     </td>
     <td>
-        <%= link_to "Destroy", book_path(@book), method: :delete %>
+        <%= link_to "Destroy", book_path(@book), method: :delete, class: "btn btn-danger" %>
     </td>
   <% else %>
   <% end %>

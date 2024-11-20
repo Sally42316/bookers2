@@ -17,7 +17,7 @@
 <% if @user.image.attached? %>
     <%= image_tag @user.image, size: "100x100" %>
   <% else %>
-    <%= image_tag 'default-image', size: "200x200" %>
+    <%= image_tag 'default-image', size: "100x100" %>
   <% end %>
 </tr>
 <tr>
@@ -43,7 +43,7 @@
 
 
 
-<h2>New book :body左側</h2>
+<h2>New book</h2>
 <!-- form_with部分 -->
 <%= form_with model: @book_new do |f| %>
   <h4>Title</h4>
@@ -85,7 +85,7 @@
       <% if @user.image.attached? %>
         <%= image_tag @user.image, size: "100x100" %>
       <% else %>
-        <%= image_tag 'default-image', size: "200x200" %>
+        <%= image_tag 'default-image', size: "100x100" %>
       <% end %>
     </td>
     <td>

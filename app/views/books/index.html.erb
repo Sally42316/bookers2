@@ -17,7 +17,7 @@
 <% if @user.image.attached? %>
     <%= image_tag @user.image, size: "100x100" %>
   <% else %>
-    <%= image_tag 'default-image', size: "200x200" %>
+    <%= image_tag 'default-image', size: "100x100" %>
   <% end %>
 </tr>
 <tr>
@@ -80,7 +80,7 @@
             <% if @user.image.attached? %>
               <%= image_tag @user.image, size: "100x100" %>
             <% else %>
-              <%= image_tag 'default-image', size: "200x200" %>
+              <%= image_tag 'default-image', size: "100x100" %>
             <% end %>
             </td>
             <td><%= link_to book.title, book_path(book) %></td>

@@ -1,0 +1,100 @@
+<div class='container px-5 px-sm-0'>
+	<div class='row'>
+	  <div class='col-md-3'>
+
+
+
+<h1>Books#show</h1>
+<p>Find me in app/views/books/show.html.erb</p>
+
+
+
+
+
+<h1>User info</h1>
+<table class='table'>
+<tr>
+<% if @user.image.attached? %>
+    <%= image_tag @user.image, size: "100x100" %>
+  <% else %>
+    <%= image_tag 'default-image', size: "200x200" %>
+  <% end %>
+</tr>
+<tr>
+<td><p>name</p></td>
+  <td><%= @user.name %></td>
+</tr>
+<tr>
+  <td><p>introduction</p></td>
+  <td><%= @user.introduction %></td>
+</tr>
+</table>
+
+<div class="row">
+<%= link_to (current_user == @user) ? edit_user_path(@user) : current_user, class: "btn btn-block btn-li btn-outline-dark" do %>
+  <i class="fa-solid fa-user-gear"></i>
+<% end %>
+
+  </div>
+
+
+
+
+
+
+
+  <h1>New book</h1>
+  <!-- form_with部分 -->
+  <%= form_with model: @book_new do |f| %>
+    <h4>Title</h4>
+    <%= f.text_field :title %>
+    
+    <h4>Opinion</h4>
+    <%= f.text_area :body %>
+    
+    <%= f.submit 'Create Book', class: "btn btn-success" %>
+  <% end %>
+
+
+
+</div>
+
+
+
+
+
+
+<div class='col-md-8 offset-md-1'>
+<h2>Book detail</h2>
+<table class="table">
+<tbody>
+  <tr>
+    <td>
+      <% if @user.image.attached? %>
+        <%= image_tag @user.image, size: "100x100" %>
+      <% else %>
+        <%= image_tag 'default-image', size: "200x200" %>
+      <% end %>
+      <br>
+      <%= link_to @user.name, user_path(@book.user) %>
+    </td>
+    <td>
+      <%= link_to @book.title, book_path(@book) %>
+    </td>
+    <td>
+      <%= @book.body %>
+    </td>
+  <% if @book.user == current_user %>
+    <td>
+        <%= link_to "Edit", edit_book_path(@book) %>
+    </td>
+    <td>
+        <%= link_to "Destroy", book_path(@book), method: :delete %>
+    </td>
+  <% else %>
+  <% end %>
+    
+  
+  </tr>
+</tbody>
+</table>

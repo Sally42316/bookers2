@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  # get 'books/index'
+  # get 'books/show'
+  # get 'books/edit'
+
+
   devise_for :users
   root to: "homes#top"
   get "home/about", to: "homes#about"
@@ -9,16 +14,6 @@ Rails.application.routes.draw do
 
   # ↓ヘッダーのAboutリンクをつくりたくて
   get 'home/about', to: 'homes#about'
-  get 'book/index', to: 'books#index
-
-  
-  Rails.application.routes.draw do
-  get 'about', to: 'homes#about', as: 'about'
-    
-  end
+  get 'book/index', to: 'books#index'
 
 end
-
-
-# application.html.erbで`about_path`を使用できるようにしたもの↓
-# 上記のように設定することで'/about'にアクセスしたときにhomesコントローラーのaboutアクションが呼ばれるようになり、名前付きルート'about_path'が生成されます。

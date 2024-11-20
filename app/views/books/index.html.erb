@@ -22,10 +22,11 @@
         <tr>
         <td>
         <% if book.user.image.attached? %>
-          <%= image_tag book.user.image, size: "100x100" %>
-        <% else %>
-          <%= image_tag 'default-image', size: "100x100" %>
-        <% end %>
+  <%= link_to(image_tag(book.user.image, size: "100x100"), book_path(book)) %>
+<% else %>
+  <%= link_to(image_tag('default-image', size: "100x100"), book_path(book)) %>
+<% end %>
+       
       </td>
             <td><%= link_to book.title, book_path(book) %></td>
             <td><%= book.body %></td>

@@ -5,9 +5,9 @@
 <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 <h1>Editing Book</h1>
 
-          
-            <div class="form-group">
             <%= form_with model: @book do |f| %>
+            <div class="form-group">
+            
               <%= f.label :Title %>
               <br>
               <%= f.text_field :title, class: "col-lg-12" %>
@@ -22,7 +22,7 @@
             <div class="form-group">
               <%= f.submit 'Update Book', class: "btn btn-success", data: { disable_with: 'Update Book' } %>
             </div>
-          <% end %>
+            <% end %>
 
 
 

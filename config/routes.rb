@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
   get 'users/edit'
 
-  # ↓ヘッダーのAboutリンクをつくりたくて
+  # ↓headerのAboutリンクをつくりたくて
   get 'home/about', to: 'homes#about'
   get 'book/index', to: 'books#index'
-
+  get '/about', to: 'controller#action'
 end

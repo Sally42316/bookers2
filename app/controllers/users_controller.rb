@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   def show
     @book_new = Book.new
     
-
     @user = User.find(params[:id])
     # @book = Book.find_by(user_id: @user.id) 
     @books = @user.books
@@ -37,6 +36,6 @@ class UsersController < ApplicationController
 
   # ストロングパラメータ
   def user_params
-    params.require(:user).permit(:name, :introduction, :image)
+    params.require(:user).permit(:name, :image, :introduction)
   end
 end

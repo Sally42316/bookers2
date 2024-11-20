@@ -1,20 +1,44 @@
-<h1>"Edit"</h1>
-<p>views/books/edit.html.erb</p>
-
-
+<main>
+<p id="notice"></p>
+<div class="container">
+<div class="row">
+<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 <h1>Editing Book</h1>
 
-<%= form_with model: @book do |f| %>
+          
+            <div class="form-group">
+            <%= form_with model: @book do |f| %>
+              <%= f.label :Title %>
+              <br>
+              <%= f.text_field :title, class: "col-lg-12" %>
+            </div>
+  
+            <div class="form-group">
+              <%= f.label :Opinion %>
+              <br>
+              <%= f.text_field :body, class: "col-lg-12" %>
+            </div>
 
-  <h4>タイトル</h4>
-  <%= f.text_field :title %>
-  
-  <h4>本文</h4>
-  <%= f.text_area :body %>
-  
-  <%= f.submit 'Update Book' %>
-  
-<% end %>
+            <div class="form-group">
+              <%= f.submit 'Update Book', class: "btn btn-success", data: { disable_with: 'Update Book' } %>
+            </div>
+          <% end %>
 
-<%= link_to "Show", book_path(@book) %>
-<%= link_to "Back", books_path %>
+
+
+
+
+          <%= link_to "Show", book_path(@book) %>
+          |
+          <%= link_to "Back", books_path %>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+
+
+

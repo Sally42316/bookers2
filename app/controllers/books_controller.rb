@@ -19,18 +19,17 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user_id = current_user.id  # ログイン中のユーザーの ID を book の user_id に代入
     if @book.save
-      redirect_to books_path
-      # , notice: "Book was successfully created."
+      redirect_to books_path, notice: "Book was successfully created."
     else
       render :index
     @book.save
     redirect_to book_path(@book)
     end
-  end
+end
 
   def destroy
-    book = Book.find(params[:id])
-    book.destroy
+    @book = Book.find(params[:id])
+    @book.destroy
     redirect_to books_path
   end
 

@@ -14,21 +14,21 @@
 
       <h2>User info</h2>
       <table class='table'>
-      <tr>
-      <% if @user.image.attached? %>
-          <%= image_tag @user.image, size: "100x100" %>
-        <% else %>
-          <%= image_tag 'default-image', size: "100x100" %>
-        <% end %>
-      </tr>
-      <tr>
-        <td><p>name</p></td>
-        <td><%= @user.name %></td>
-      </tr>
-      <tr>
-        <td><p>introduction</p></td>
-        <td><%= @user.introduction %></td>
-      </tr>
+        <tr>
+          <% if @user.image.attached? %>
+            <%= image_tag @user.image, size: "100x100" %>
+          <% else %>
+            <%= image_tag 'default-image', size: "100x100" %>
+          <% end %>
+        </tr>
+        <tr>
+          <td><p>name</p></td>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td><p>introduction</p></td>
+          <td><%= @user.introduction %></td>
+        </tr>
       </table>
       
       <div class="row">
@@ -36,7 +36,7 @@
           <i class="fa-solid fa-user-gear"></i>
         <% end %>
       
-        </div>
+      </div>
 
 
 

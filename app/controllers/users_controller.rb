@@ -11,9 +11,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # @book = Book.find_by(user_id: @user.id) 
     @books = @user.books
-
-    # ↓悩んだ跡
-    # @bookk = Book.find(params[:id])
+    # @book = Book.find(params[:id])
 
     # ↓空の@bookを作る
     # データがない箱

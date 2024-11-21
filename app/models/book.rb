@@ -5,5 +5,6 @@ class Book < ApplicationRecord
     # ↓があることでuser.rbと1:Nの関係になる
     belongs_to :user
 
-    
+    validates :title, length: { in: 2..20 }, uniqueness: true
+    validates :introduction, length: { maximum: 50 }
 end

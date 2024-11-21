@@ -12,7 +12,11 @@
   </head>
 
   <body>
+  
     <%= render 'layouts/header' %>
+    <% if flash[:success] %>
+    <%= flash[:success] %>
+<% end %>
     <main>
 
       <%= yield %>

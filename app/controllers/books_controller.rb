@@ -1,8 +1,9 @@
 class BooksController < ApplicationController
   def index
-    @user = current_user # サインインしているユーザーを取得するなどの方法で@userをセットする
     @books = Book.all
+    @user = current_user 
     @book_new = Book.new
+    @book = Book.new
   end
 
   def show
@@ -22,14 +23,16 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book.user_id = current_user.id
     @book = Book.new(book_params)
+    @book.user_id = current_user.id
     if @book.save
       flash[:notice] = "You've created book successfully"
       redirect_to book_path(@book)
     else
       flash[:notice] = "create error"
-      render :new
+      @books = Book.all
+      @user = current_user
+      render :index
     end
 
     # フラッシュメッセージ
@@ -44,7 +47,7 @@ class BooksController < ApplicationController
       # <%= flash[:notice] %>
     # </div>
     
-end
+  end
 
   def destroy
     @book = Book.find(params[:id])
@@ -54,13 +57,13 @@ end
 
   def update
     @book = Book.find(params[:id])
-  if @book.update(book_params)
-    flash[:notice] = "You've updated book successfully"
-    redirect_to book_path(@book)
-  else
-    flash[:notice] = "error"
-    render :edit
-  end
+    if @book.update(book_params)
+      flash[:notice] = "You've updated book successfully"
+      redirect_to book_path(@book)
+    else
+      flash[:notice] = "error"
+      render :edit
+    end
   end
   
 

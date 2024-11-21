@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2024_11_21_013720) do
     t.string "title"
     t.string "body"
     t.integer "user_id", null: false
-    t.string "introduction"
+    t.text "introduction" 
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 

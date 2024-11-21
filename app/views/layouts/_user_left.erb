@@ -15,7 +15,7 @@
       <h2>User info</h2>
       <table class='table'>
         <tr>
-          <% if @user.image.attached? %>
+          <% if user.image.attached? %>
             <%= image_tag @user.image, size: "100x100" %>
           <% else %>
             <%= image_tag 'default-image', size: "100x100" %>
@@ -23,16 +23,16 @@
         </tr>
         <tr>
           <td><p>name</p></td>
-          <td><%= @user.name %></td>
+          <td><%= user.name %></td>
         </tr>
         <tr>
           <td><p>introduction</p></td>
-          <td><%= @user.introduction %></td>
+          <td><%= user.introduction %></td>
         </tr>
       </table>
       
       <div class="row">
-      <%= link_to (current_user == @user) ? edit_user_path(@user) : current_user, class: "btn btn-block btn-li btn-outline-dark" do %>
+      <%= link_to (current_user == user) ? edit_user_path(user) : current_user, class: "btn btn-block btn-li btn-outline-dark" do %>
           <i class="fa-solid fa-user-gear"></i>
         <% end %>
       

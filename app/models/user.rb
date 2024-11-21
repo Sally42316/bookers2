@@ -32,7 +32,7 @@ class User < ApplicationRecord
    has_many :books
  
  # `User`モデルに`introduction`というカラムが存在しない場合、`introduction`メソッドを追加して値を返すように定義します。
- def introduction
- end
+ #  def introduction
+ #  end
  
  end

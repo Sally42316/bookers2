@@ -7,7 +7,9 @@ class HomesController < ApplicationController
 
   def index
     if logged_in?
-      flash[:success] = "Loged in successfully"
+      flash[:signed_up]
+    else
+      flash[:errors]
     end
   end
 end

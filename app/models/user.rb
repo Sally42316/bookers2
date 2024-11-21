@@ -4,8 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # バリテーション↓
+  validates :name, length: { in: 2..20 }, uniqueness: true
+  validates :introduction, length: { maximum: 50 }
+
    # ↓userモデルにnameとpositionに加えて画像を扱うためのimageカラムが追記されたかのように扱うことができます。
-   has_one_attached :image
+  has_one_attached :image
 
 
    # ↓ユーザーの画像を表示する

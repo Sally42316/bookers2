@@ -22,13 +22,15 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
     @book.user_id = current_user.id
+    @book = Book.new(book_params)
     if @book.save
       flash[:notice] = "You've created book successfully"
       redirect_to book_path(@book)
     else
+      flash[:notice] = "create error"
       render :new
+    end
 
     # フラッシュメッセージ
     # １. データを受け取り新規登録するためのインスタンス作成
@@ -41,7 +43,7 @@ class BooksController < ApplicationController
       # <div>
       # <%= flash[:notice] %>
     # </div>
-    end
+    
 end
 
   def destroy
@@ -56,6 +58,7 @@ end
     flash[:notice] = "You've updated book successfully"
     redirect_to book_path(@book)
   else
+    flash[:notice] = "error"
     render :edit
   end
   end

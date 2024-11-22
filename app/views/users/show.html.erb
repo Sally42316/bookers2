@@ -23,6 +23,7 @@
       <tr>
       
       <td>
+<% if @user == current_user %>
   <% if @user.profile_image.attached? %>
     <%= link_to current_user do %>
       <%= image_tag @user.profile_image, size: "100x100" %>
@@ -32,6 +33,17 @@
       <%= image_tag 'default-image', size: "100x100" %>
     <% end %>
   <% end %>
+<% else %>
+       <% if @user.profile_image.attached? %>
+    <%= link_to @user do %>
+      <%= image_tag @user.profile_image, size: "100x100" %>
+    <% end %>
+  <% else %>
+    <%= link_to @user do %>
+      <%= image_tag 'default-image', size: "100x100" %>
+    <% end %>
+  <% end %>
+<% end %>
 </td>
         <td><%= link_to book.title, book_path(book.id) %></td>
         <td><%= book.body %></td>

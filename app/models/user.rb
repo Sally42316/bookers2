@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 50 }
 
    # ↓userモデルにnameとpositionに加えて画像を扱うためのimageカラムが追記されたかのように扱うことができます。
-  has_one_attached :image
+  has_one_attached :profile_image
 
 
    # ↓ユーザーの画像を表示する

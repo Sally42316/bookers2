@@ -30,8 +30,8 @@
     <% @books.each do |book| %>
       <tr>
         <td>
-          <% if book.user.image.attached? %>
-            <%= link_to image_tag(book.user.image, size: "100x100"), user_path(book.user) %>
+          <% if book.user.profile_image.attached? %>
+            <%= link_to image_tag(book.user.profile_image, size: "100x100"), user_path(book.user) %>
           <% else %>
             <%= link_to image_tag('default-image', size: "100x100"), user_path(book.user) %>
           <% end %>

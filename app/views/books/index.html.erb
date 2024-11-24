@@ -35,11 +35,12 @@
           <% else %>
             <%= link_to image_tag('default-image', size: "100x100"), user_path(book.user) %>
           <% end %>
-          </td>
+        </td>
           <td><%= link_to book.title, book_path(book) %></td>
           <td><%= book.body %></td>
-        </tr>
-        <% end %>
+          <td><%= link_to "#{book.book_comments.count} コメント", book_path(book.id) %></td>
+      </tr>
+    <% end %>
     </thead>
   </tbody>
   

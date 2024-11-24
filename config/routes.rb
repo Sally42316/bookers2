@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update, :create]
   resources :books, only: [:new, :index, :show, :create, :edit, :destroy, :update]
 
+  # ↓これでコメント投稿のルーティングを設定ができる
+  resources :books, only: [:new, :create, :index, :show, :destroy] do
+    resources :post_comments, only: [:create, :destroy]
+  end
+
   get 'users/edit'
 
   # ↓headerのAboutリンクをつくりたくて

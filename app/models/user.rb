@@ -10,10 +10,12 @@ class User < ApplicationRecord
 
    # ↓userモデルにnameとpositionに加えて画像を扱うためのimageカラムが追記されたかのように扱うことができます。
   has_one_attached :profile_image
-
+  
+  # ↓これでコメントが1:Nでつくようになる
+  has_many :post_comments, dependent: :destroy
 
    # ↓ユーザーの画像を表示する
-   has_one_attached :profile_image
+  #  has_one_attached :profile_image
  
    def get_profile_image(width, height)
      unless profile_image.attached?

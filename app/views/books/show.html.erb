@@ -1,10 +1,4 @@
-
-
-
-
 <%= render 'layouts/user_left', book:@book_new, user:@user %>
-
-
 
 
 <div class='col-md-8 offset-md-1'>
@@ -37,8 +31,36 @@
     </td>
   <% else %>
   <% end %>
-    
-  
-  </tr>
+    </tr>
 </tbody>
 </table>
+
+
+<div>
+  <p>コメント件数：<%= @book.book_comments.count %></p>
+  <% @book.book_comments.each do |book_comment| %>
+    <p>
+    <% if @user.profile_image.attached? %>
+        <%= link_to image_tag(@book.user.profile_image, size: "100x100"), user_path(@user) %>
+      <% else %>
+        <%= link_to image_tag('default-image', size: "100x100"), user_path(@user) %>
+      <% end %>
+    </p>
+    <%= book_comment.user.name %>
+    <%= book_comment.created_at.strftime('%Y/%m/%d') %><%= book_comment.comment %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model: [@book, @book_comment], url: book_post_comments_path(@book) do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
+
+
+# image_tagがbookでは？？？
+    # <%= image_tag post_comment.user.get_profile_image(100,100) % >
+
+
+
+

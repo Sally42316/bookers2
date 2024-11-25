@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     # データがない箱
     # ↓作ることでshow.html.erbからbooks_controller.rbの def createの@book = Book.new(book_params)が使える
     @book = Book.new
+    @users = User.all
   end
 
   def edit

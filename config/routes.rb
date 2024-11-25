@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/followings'
+  get 'relationships/followers'
   # get 'books/index'
   # get 'books/show'
   # get 'books/edit'
@@ -17,6 +19,13 @@ Rails.application.routes.draw do
   end
 
   get 'users/edit'
+
+  # follow,follwedの関係でネストさせる
+  resources :users do
+    resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+  end
 
   # ↓headerのAboutリンクをつくりたくて
   get 'home/about', to: 'homes#about'

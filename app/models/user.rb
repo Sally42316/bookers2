@@ -4,6 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+     
+       # ↓があることでbook.rbと1:Nの関係になる
+   has_many :post_images, dependent: :destroy
+ 
+ 
+   # UserモデルとBookモデルの間に1対多の関連付けを定義します。Userが多数のBookを持つ関係なので、Userモデルに`has_many :books`を追加し、Bookモデルには`belongs_to :user`を追加します。
+   has_many :books
+
   # バリテーション↓
   validates :name, length: { in: 2..20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }
@@ -27,14 +35,31 @@ class User < ApplicationRecord
      end
      profile_image.variant(resize_to_limit: [100, 100]).processed
    end
+
+   # フォローをした、されたの関係
+has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  
+# フォローをした、されたの関係で一覧画面で使う
+has_many :followings, through: :relationships, source: :followed
+has_many :followers, through: :reverse_of_relationships, source: :follower
+
+# フォローしたときの処理
+def follow(user_id)
+  relationships.create(followed_id: user_id)
+end
+# フォローを外すときの処理
+def unfollow(user_id)
+  relationships.find_by(followed_id: user_id).destroy
+end
+# フォローしているか判定
+def following?(user)
+  followings.include?(user)
+end
+
+
  
- 
-       # ↓があることでbook.rbと1:Nの関係になる
-   has_many :post_images, dependent: :destroy
- 
- 
-   # UserモデルとBookモデルの間に1対多の関連付けを定義します。Userが多数のBookを持つ関係なので、Userモデルに`has_many :books`を追加し、Bookモデルには`belongs_to :user`を追加します。
-   has_many :books
+
  
  # `User`モデルに`introduction`というカラムが存在しない場合、`introduction`メソッドを追加して値を返すように定義します。
  #  def introduction

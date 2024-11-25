@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :book_comments, dependent: :destroy
 
   # ↓これでいいね機能がつかえる
-  # has_many :favorites, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
    # ↓ユーザーの画像を表示する
   #  has_one_attached :profile_image

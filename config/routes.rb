@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # ↓これでコメント投稿のルーティングを設定ができる
   resources :books, only: [:new, :create, :index, :show, :destroy] do
-    resources :post_comments, only: [:create, :destroy]
+    resources :book_comments, only: [:create, :destroy]
   end
 
   get 'users/edit'

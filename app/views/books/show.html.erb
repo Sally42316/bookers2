@@ -31,35 +31,35 @@
     </td>
   <% else %>
   <% end %>
+  <td>
+    <p><%= link_to "#{@book.book_comments.count} コメント", book_path(@book.id) %></p>
+  </td>
     </tr>
 </tbody>
 </table>
 
 
 <div>
+
+
   <p>コメント件数：<%= @book.book_comments.count %></p>
   <% @book.book_comments.each do |book_comment| %>
-    <p>
-    <% if @user.profile_image.attached? %>
-        <%= link_to image_tag(@book.user.profile_image, size: "100x100"), user_path(@user) %>
-      <% else %>
-        <%= link_to image_tag('default-image', size: "100x100"), user_path(@user) %>
-      <% end %>
-    </p>
+    <p><%= image_tag book_comment.user.get_profile_image(100,100) %></p>
     <%= book_comment.user.name %>
     <%= book_comment.created_at.strftime('%Y/%m/%d') %><%= book_comment.comment %>
+    <% if book_comment.user == current_user %>
+      <%= link_to "削除", book_book_comment_path(book_comment.book, book_comment), method: :delete %>
+    <% end %>
   <% end %>
 </div>
 <div>
-  <%= form_with model: [@book, @book_comment], url: book_post_comments_path(@book) do |f| %>
+  <%= form_with model: [@book, @book_comment] do |f| %>
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
     <%= f.submit "送信する" %>
   <% end %>
 </div>
 
 
-# image_tagがbookでは？？？
-    # <%= image_tag post_comment.user.get_profile_image(100,100) % >
 
 
 

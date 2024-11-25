@@ -3,8 +3,9 @@ class BooksController < ApplicationController
     @books = Book.all
     @user = current_user 
     @book_new = Book.new
+    @book_comment = BookCommentsController.new
     @book = Book.new
-    @post_comment = PostCommentsController.new
+
   end
 
   def show

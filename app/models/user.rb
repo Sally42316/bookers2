@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   
   # ↓これでコメントが1:Nでつくようになる
-  has_many :post_comments, dependent: :destroy
+  has_many :book_comments, dependent: :destroy
 
    # ↓ユーザーの画像を表示する
   #  has_one_attached :profile_image

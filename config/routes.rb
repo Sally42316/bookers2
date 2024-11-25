@@ -8,11 +8,12 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get "home/about", to: "homes#about"
   resources :users, only: [:index, :show, :edit, :update, :create]
-  resources :books, only: [:new, :index, :show, :create, :edit, :destroy, :update]
+
 
   # ↓これでコメント投稿のルーティングを設定ができる
-  resources :books, only: [:new, :create, :index, :show, :destroy] do
+  resources :books, only: [:index, :show, :edit, :create, :destroy, :update] do
     resources :book_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
   end
 
   get 'users/edit'

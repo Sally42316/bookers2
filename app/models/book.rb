@@ -8,12 +8,6 @@ class Book < ApplicationRecord
     # ↓これでコメントが付くようになる
     has_many :book_comments, dependent: :destroy
 
-    # ↓これでいいね機能がつく
-    # has_many :favorites, dependent: :destroy
-      # def favorited_by?(user)
-        # favorites.exists?(user_id: user.id)
-      # end
-
     # バリテーション↓
     validates :title, presence: true
     validates :body, presence: true, length: { maximum: 200 }

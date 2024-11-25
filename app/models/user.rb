@@ -13,7 +13,6 @@ class User < ApplicationRecord
   
   # ↓これでコメントが1:Nでつくようになる
   has_many :book_comments, dependent: :destroy
-  #  has_many :book_comments, dependent: :destroy では？？？
 
   # ↓これでいいね機能がつかえる
   # has_many :favorites, dependent: :destroy

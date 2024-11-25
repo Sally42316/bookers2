@@ -1,2 +1,9 @@
 <h1>Relationships#followings</h1>
 <p>Find me in app/views/relationships/followings.html.erb</p>
+
+<h2>Follow Users</h2>
+<% if @users.exists? %>
+  <%= render '/users/index', users: @users %>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>

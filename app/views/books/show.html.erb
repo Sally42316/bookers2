@@ -50,6 +50,9 @@
     <% if book_comment.user == current_user %>
       <%= link_to "削除", book_book_comment_path(book_comment.book, book_comment), method: :delete %>
     <% end %>
+
+
+
   <% end %>
 </div>
 <div>

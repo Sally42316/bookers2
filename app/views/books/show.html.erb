@@ -51,9 +51,21 @@
       <%= link_to "削除", book_book_comment_path(book_comment.book, book_comment), method: :delete %>
     <% end %>
 
-
-
+    <% if @book.favorited_by?(current_user) %>
+    <p>
+    <%= link_to book_favorites_path(@book), method: :delete do %>
+      ♥<%= @book.favorites.count %> いいね
+    <% end %>
+    </p>
+    <% else %>
+    <p>
+    <%= link_to book_favorites_path(@book), method: :post do %>
+      ♡<%= @favorites.count %> いいね
+    <% end %>
+    </p>
+    <% end %>
   <% end %>
+
 </div>
 <div>
   <%= form_with model: [@book, @book_comment] do |f| %>

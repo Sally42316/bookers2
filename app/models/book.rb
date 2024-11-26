@@ -18,18 +18,16 @@ class Book < ApplicationRecord
     validates :title, presence: true
     validates :body, presence: true, length: { maximum: 200 }
 
-    # 検索方法分岐
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @book = Book.where("title LIKE?","#{word}")
-    elsif search == "forward_match"
-      @book = Book.where("title LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @book = Book.where("title LIKE?","%#{word}")
-    elsif search == "partial_match"
-      @book = Book.where("title LIKE?","%#{word}%")
-    else
-      @book = Book.all
+    # ↓検索機能
+    def self.search_for(content, method)
+      if method == "perfect_match"
+        where("content LIKE ?", content)
+      elsif method == "partial_match"
+        where("content LIKE ?", "%#{content}%")
+      else
+        all
+      end
     end
-  end
+
+
 end

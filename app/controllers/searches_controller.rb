@@ -2,18 +2,15 @@ class SearchesController < ApplicationController
     before_action :authenticate_user!
 
     def search
-      @range = params[:range]
-  
-      if @range == "User"
-        @users = User.looks(params[:search], params[:word])
-      else
-        @books = Book.looks(params[:search], params[:word])
-      end
-
-      respond_to do |format|
-        format.html { render 'searchs/search_result' } # search_result.html.erbを指定
-      end
-    end
+		@model = params[:model]
+		@content = params[:content]
+		@method = params[:method]
+		if @model == 'user'
+			@records = User.search_for(@content, @method)
+		else
+			@records = Book.search_for(@content, @method)
+		end
+	end
 
     
 end

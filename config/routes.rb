@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get 'users/edit'
 
   # ↓検索機能用のルーティング
-  get "search" => "searches#search"
+  get '/search', to: 'searches#search'
 
   # follow,follwedの関係でネストさせる
   resources :users do

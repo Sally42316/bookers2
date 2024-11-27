@@ -28,7 +28,7 @@ class User < ApplicationRecord
    # ↓ユーザーの画像を表示する
   #  has_one_attached :profile_image
  
-   def get_profile_image(width, height)
+   def get_profile_image(width = 100, height = 100)
      unless profile_image.attached?
        file_path = Rails.root.join('app/assets/images/default-image.jpg')
        profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
